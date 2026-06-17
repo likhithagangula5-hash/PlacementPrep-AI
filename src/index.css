@@ -1,0 +1,158 @@
+/* ─── CSS Variables (defaults — overridden at runtime by App.jsx) ─── */
+:root {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #111827;
+  --subtext: #6b7280;
+  --border: #e5e7eb;
+  --primary: #2563eb;
+  --danger: #dc2626;
+  --success: #059669;
+
+  /* Typography */
+  --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode class toggled by App.jsx */
+:root.dark {
+  --bg: #0b0f19;
+  --card: #111827;
+  --text: #e5e7eb;
+  --subtext: #9ca3af;
+  --border: #1f2937;
+  --primary: #3b82f6;
+  --danger: #ef4444;
+  --success: #10b981;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* 
+  FIX: Removed the broken #root { width: 1126px; margin: 0 auto } 
+  That was fighting the sidebar fixed layout. Now #root is full-width.
+*/
+#root {
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── Typography ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sans);
+  color: var(--text);
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -0.5px; }
+h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 600; }
+h3 { font-size: 18px; font-weight: 600; }
+
+p { margin: 0 0 12px; }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code, pre {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+code {
+  background: var(--border);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+pre {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+}
+
+/* ─── Shared utility classes ─── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+  text-decoration: none;
+}
+
+.btn:hover { opacity: 0.88; }
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ─── Mobile responsive ─── */
+@media (max-width: 1023px) {
+  #main-content {
+    margin-left: 0 !important;
+    padding-top: 56px;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  #hamburger { display: none !important; }
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--subtext); }
