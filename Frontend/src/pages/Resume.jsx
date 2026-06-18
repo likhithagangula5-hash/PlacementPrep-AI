@@ -480,7 +480,7 @@ const progressFillStyle = (theme, completionPct) => ({
 
 const workspaceStyle = {
   display: "grid",
-  gridTemplateColumns: "minmax(340px, 0.92fr) minmax(440px, 1.08fr)",
+  gridTemplateColumns: "1fr 1fr",
   gap: "24px",
   alignItems: "start",
 };
@@ -609,7 +609,8 @@ const paperShellStyle = (isDark, theme) => ({
 });
 
 const resumePaperStyle = {
-  width: "794px",
+  width: "100%",
+  maxWidth: "794px",
   minHeight: "1123px",
   margin: "0 auto",
   background: "#ffffff",

@@ -201,7 +201,7 @@ const getDashboardStats = () => {
 
 const containerStyle = (isDark, theme) => ({
   padding: "30px",
-  marginLeft: "240px",
+  marginLeft: "0",
   minHeight: "100vh",
   fontFamily: "'Inter', system-ui, Arial, sans-serif",
   position: "relative",

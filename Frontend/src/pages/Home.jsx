@@ -85,7 +85,7 @@ export default function Home({ theme = {} }) {
 
 const containerStyle = (isDark, theme) => ({
   padding: "40px 30px",
-  marginLeft: "240px",
+  marginLeft: "0",
   minHeight: "100vh",
   fontFamily: "'Inter', system-ui, Arial, sans-serif",
   background: theme.bg || (isDark ? "linear-gradient(135deg, #0f172a 0%, #1e2937 100%)" : "linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%)"),

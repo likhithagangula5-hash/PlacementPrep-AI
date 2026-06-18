@@ -83,7 +83,7 @@ export default function AIInterview({ theme = {} }) {
   const text    = theme.text  || "#e5e7eb";
 
   return (
-    <div style={{ padding: "24px", background: bg, minHeight: "100vh", color: text, display: "flex", flexDirection: "column", maxWidth: "860px", margin: "0 auto", boxSizing: "border-box" }}>
+    <div style={{ padding: window.innerWidth < 768 ? "12px" : "24px", background: bg, minHeight: "100vh", color: text, display: "flex", flexDirection: "column", maxWidth: "860px", margin: "0 auto", boxSizing: "border-box" }}>
 
       {/* Header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "16px" }}>
@@ -113,7 +113,7 @@ export default function AIInterview({ theme = {} }) {
                 </div>
               )}
               <div style={{
-                maxWidth: "72%",
+                maxWidth: window.innerWidth < 768 ? "90%" : "72%",
                 padding: "10px 14px",
                 borderRadius: isUser ? "16px 16px 4px 16px" : "16px 16px 16px 4px",
                 background: isUser ? primary : (msg.isError ? "#7f1d1d" : "#1f2937"),
