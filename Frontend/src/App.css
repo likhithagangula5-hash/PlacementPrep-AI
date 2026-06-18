@@ -1,6 +1,18 @@
 /* ─── App.css ─── */
 /* All nested CSS flattened — works on all browsers including older Android */
+* {
+  box-sizing: border-box;
+}
 
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 /* ── Counter ── */
 .counter {
   font-size: 16px;
@@ -226,45 +238,21 @@
   }
 }
 
-/* ─── Extra mobile fixes ─── */
-@media (max-width: 768px) {
-  #center {
-    padding: 16px;
-    gap: 12px;
-  }
+/* Your existing CSS above... */
 
-  #next-steps {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  #next-steps > div {
-    padding: 16px;
-  }
-
-  .counter {
-    font-size: 14px;
-    padding: 4px 8px;
+/* Desktop */
+@media (min-width: 1024px) {
+  #main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
   }
 }
 
-@media (max-width: 480px) {
-  #center {
-    padding: 12px;
-    gap: 8px;
-  }
-
-  #next-steps ul {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  #next-steps ul li {
-    flex: 1 1 100%;
-  }
-
-  #next-steps ul a {
-    font-size: 14px;
-    padding: 8px;
+/* Mobile */
+@media (max-width: 1023px) {
+  #main-content {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 70px;
   }
 }

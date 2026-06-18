@@ -59,7 +59,7 @@ export default function App() {
       <div
         style={{
           background: theme.bg,
-          minHeight: "100svh",
+          minHeight: "100vh",
           color: theme.text,
           display: "flex",
         }}

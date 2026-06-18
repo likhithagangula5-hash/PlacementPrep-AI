@@ -93,7 +93,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
         id="sidebar-container"
         style={{
           width: "240px",
-          height: "100dvh",
+          height: "100vh",
           position: "fixed",
           left: 0,
           top: 0,
