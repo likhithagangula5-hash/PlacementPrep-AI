@@ -30,13 +30,11 @@ export default function AIInterview({ theme = {} }) {
         .slice(1)
         .map((m) => ({ role: m.role === "assistant" ? "assistant" : "user", content: m.text }));
 
-      const res = await fetch("http://localhost:5000/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        // FIX: was `Input` (undefined) — now correctly uses `trimmed`
-        body: JSON.stringify({ message: trimmed, history }),
-      });
-
+      const res = await fetch("https://placementprep-ai-1.onrender.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: trimmed, history }),
+    });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
         throw new Error(err.error || `Server error ${res.status}`);
