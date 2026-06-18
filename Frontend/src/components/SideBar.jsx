@@ -40,7 +40,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
     transition: "background 0.15s ease, color 0.15s ease",
   });
 
-  const sidebarBg = theme.card || "#111827";
+  const SideBarBg = theme.card || "#111827";
   const borderColor = theme.border || "rgba(255,255,255,0.08)";
 
   return (
@@ -85,9 +85,9 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
         />
       )}
 
-      {/* Sidebar */}
+      {/* SideBar */}
       <div
-        id="sidebar-container"
+        id="SideBar-container"
         style={{
           width: "240px",
           height: "100vh",
@@ -97,7 +97,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
           padding: "16px 12px",
           display: "flex",
           flexDirection: "column",
-          background: sidebarBg,
+          background: SideBarBg,
           borderRight: `1px solid ${borderColor}`,
           zIndex: 1000,
           // On desktop: always visible. On mobile: slide in/out
@@ -170,23 +170,23 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
       <style>{`
         @media (max-width: 1023px) {
           #hamburger { display: inline-block !important; }
-          #sidebar-backdrop { display: block !important; }
-          #sidebar-container {
+          #SideBar-backdrop { display: block !important; }
+          #SideBar-container {
             transform: ${isOpen ? "translateX(0)" : "translateX(-100%)"};
           }
         }
         @media (min-width: 1024px) {
           #hamburger { display: none !important; }
-          #sidebar-container { transform: translateX(0) !important; }
+          #SideBar-container { transform: translateX(0) !important; }
         }
 
         /* Hover effect for nav links */
-        #sidebar-container a:hover {
+        #SideBar-container a:hover {
           background: ${theme.primary ? theme.primary + "22" : "rgba(59,130,246,0.13)"} !important;
         }
 
         /* Theme button hover */
-        #sidebar-container button:first-of-type:hover {
+        #SideBar-container button:first-of-type:hover {
           background: ${borderColor} !important;
         }
       `}</style>
