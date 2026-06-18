@@ -15,7 +15,6 @@ import Admin from "./pages/Admin";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    // Initialize from localStorage immediately to avoid flash
     return localStorage.getItem("theme") === "dark";
   });
 
@@ -47,13 +46,11 @@ export default function App() {
         success: "#059669",
       };
 
-  // Sync theme to CSS variables — single source of truth
   useEffect(() => {
     const root = document.documentElement;
     Object.entries(theme).forEach(([key, val]) => {
       root.style.setProperty(`--${key}`, val);
     });
-    // Also set dark/light class for any CSS that needs it
     root.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
@@ -62,20 +59,21 @@ export default function App() {
       <div
         style={{
           background: theme.bg,
-          minHeight: "100vh",
+          minHeight: "100svh",
           color: theme.text,
           display: "flex",
         }}
       >
         <SideBar darkMode={darkMode} toggleTheme={toggleTheme} theme={theme} />
 
-        {/* Overlay for mobile when sidebar is open */}
+        {/* Main content area */}
         <div
           id="main-content"
           style={{
-            marginLeft: "240px",
+            marginLeft: "240px",   /* desktop: offset sidebar */
             flex: 1,
-            minWidth: 0,
+            minWidth: 0,           /* prevent flex overflow */
+            overflowX: "hidden",
             transition: "margin-left 0.3s ease",
           }}
         >
@@ -88,24 +86,11 @@ export default function App() {
             <Route path="/coding" element={<Coding theme={theme} />} />
             <Route path="/interview" element={<Interview theme={theme} />} />
             <Route path="/resume" element={<Resume theme={theme} />} />
-            {/* Fixed: was duplicated — now only AIInterview handles /ai-interview */}
             <Route path="/ai-interview" element={<AIInterview theme={theme} />} />
             <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
       </div>
-
-      <style>{`
-        @media (max-width: 1023px) {
-          #main-content {
-            margin-left: 0 !important;
-            padding-top: 56px;
-          }
-        }
-        @media (min-width: 1024px) {
-          #hamburger { display: none !important; }
-        }
-      `}</style>
     </BrowserRouter>
   );
 }

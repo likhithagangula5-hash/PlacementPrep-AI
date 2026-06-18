@@ -1,4 +1,4 @@
-/* ─── CSS Variables (defaults — overridden at runtime by App.jsx) ─── */
+/* ─── CSS Variables ─── */
 :root {
   --bg: #f8fafc;
   --card: #ffffff;
@@ -9,7 +9,6 @@
   --danger: #dc2626;
   --success: #059669;
 
-  /* Typography */
   --sans: 'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
 
@@ -24,7 +23,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Dark mode class toggled by App.jsx */
 :root.dark {
   --bg: #0b0f19;
   --card: #111827;
@@ -37,8 +35,17 @@
 }
 
 /* ─── Reset ─── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Prevents layout shift on mobile when scrollbar appears */
+  overflow-x: hidden;
 }
 
 body {
@@ -46,13 +53,10 @@ body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
+  overflow-x: hidden; /* prevent horizontal bleed on mobile */
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* 
-  FIX: Removed the broken #root { width: 1126px; margin: 0 auto } 
-  That was fighting the sidebar fixed layout. Now #root is full-width.
-*/
 #root {
   width: 100%;
   min-height: 100svh;
@@ -68,8 +72,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
-h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 700; letter-spacing: -0.5px; }
-h2 { font-size: clamp(20px, 3vw, 28px); font-weight: 600; }
+h1 { font-size: clamp(22px, 5vw, 48px); font-weight: 700; letter-spacing: -0.5px; }
+h2 { font-size: clamp(18px, 3vw, 28px); font-weight: 600; }
 h3 { font-size: 18px; font-weight: 600; }
 
 p { margin: 0 0 12px; }
@@ -97,7 +101,7 @@ pre {
   overflow-x: auto;
 }
 
-/* ─── Shared utility classes ─── */
+/* ─── Utility: Card ─── */
 .card {
   background: var(--card);
   border: 1px solid var(--border);
@@ -105,11 +109,15 @@ pre {
   padding: 20px;
 }
 
+/* ─── Utility: Button ─── */
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   padding: 9px 18px;
+  min-height: 44px;   /* touch-friendly tap target */
+  min-width: 44px;
   border-radius: 8px;
   border: none;
   font-size: 14px;
@@ -117,6 +125,7 @@ pre {
   cursor: pointer;
   transition: opacity 0.15s, transform 0.1s;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .btn:hover { opacity: 0.88; }
@@ -138,21 +147,28 @@ pre {
   color: var(--text);
 }
 
-/* ─── Mobile responsive ─── */
-@media (max-width: 1023px) {
-  #main-content {
-    margin-left: 0 !important;
-    padding-top: 56px;
-    width: 100%;
-  }
-}
-
-@media (min-width: 1024px) {
-  #hamburger { display: none !important; }
-}
-
 /* ─── Scrollbar ─── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--subtext); }
+
+/* ─── Mobile (up to 1023px) ─── */
+@media (max-width: 1023px) {
+  #main-content {
+    margin-left: 0 !important;
+    padding-top: 60px; /* space for hamburger button */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ─── Desktop (1024px+) ─── */
+@media (min-width: 1024px) {
+  #hamburger {
+    display: none !important;
+  }
+}
