@@ -70,9 +70,8 @@ export default function App() {
         <div
           id="main-content"
           style={{
-            marginLeft: "240px",   /* desktop: offset sidebar */
             flex: 1,
-            minWidth: 0,           /* prevent flex overflow */
+            minWidth: 0,
             overflowX: "hidden",
             transition: "margin-left 0.3s ease",
           }}

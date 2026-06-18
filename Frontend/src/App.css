@@ -201,3 +201,70 @@
   right: 0;
   border-right-color: var(--border);
 }
+/* Existing styles above... */
+
+/* ─── Desktop (1024px+) ─── */
+@media (min-width: 1024px) {
+  #hamburger {
+    display: none !important;
+  }
+  #main-content {
+    margin-left: 240px; /* offset sidebar */
+  }
+}
+
+/* ─── Mobile (up to 1023px) ─── */
+@media (max-width: 1023px) {
+  #main-content {
+    margin-left: 0 !important;
+    padding-top: 60px; /* space for hamburger button */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+/* ─── Extra mobile fixes ─── */
+@media (max-width: 768px) {
+  #center {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  #next-steps {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #next-steps > div {
+    padding: 16px;
+  }
+
+  .counter {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  #center {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  #next-steps ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #next-steps ul li {
+    flex: 1 1 100%;
+  }
+
+  #next-steps ul a {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

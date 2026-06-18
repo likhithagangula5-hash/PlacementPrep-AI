@@ -36,7 +36,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
     fontSize: "14px",
     fontWeight: isActive ? "600" : "400",
     transition: "background 0.15s ease, color 0.15s ease",
-    minHeight: "44px", /* touch-friendly */
+    minHeight: "44px",
   });
 
   const sidebarBg = theme.card || "#111827";
@@ -44,7 +44,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
 
   return (
     <>
-      {/* ── Hamburger button (mobile only) ── */}
+      {/* Hamburger button (mobile only) */}
       <button
         id="hamburger"
         onClick={() => setIsOpen((o) => !o)}
@@ -73,7 +73,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
         {isOpen ? "✕" : "☰"}
       </button>
 
-      {/* ── Backdrop overlay (mobile only, when sidebar open) ── */}
+      {/* Backdrop overlay */}
       {isOpen && (
         <div
           onClick={closeMenu}
@@ -88,13 +88,12 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
         />
       )}
 
-      {/* ── Sidebar panel ── */}
+      {/* Sidebar panel */}
       <div
         id="sidebar-container"
         style={{
           width: "240px",
-          height: "100vh",
-          height: "100dvh", /* dynamic viewport height — fixes mobile browser chrome */
+          height: "100dvh",
           position: "fixed",
           left: 0,
           top: 0,
@@ -109,7 +108,6 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
           boxSizing: "border-box",
           overflowY: "auto",
           overflowX: "hidden",
-          /* iOS momentum scroll */
           WebkitOverflowScrolling: "touch",
         }}
       >
@@ -184,22 +182,15 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
         </div>
       </div>
 
-      {/* ── CSS: desktop always shows sidebar, mobile slides in/out ── */}
+      {/* CSS rules for desktop vs mobile */}
       <style>{`
-        /* Desktop: sidebar always visible, no hamburger */
         @media (min-width: 1024px) {
           #hamburger { display: none !important; }
-          #sidebar-container {
-            transform: translateX(0) !important;
-          }
+          #sidebar-container { transform: translateX(0) !important; }
         }
-
-        /* Mobile: hamburger visible, sidebar slides */
         @media (max-width: 1023px) {
           #hamburger { display: flex !important; }
         }
-
-        /* Hover effect for nav links */
         #sidebar-container a:hover {
           background: ${
             theme.primary
@@ -207,8 +198,6 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
               : "rgba(59,130,246,0.13)"
           } !important;
         }
-
-        /* Theme toggle hover */
         #sidebar-container button:first-of-type:hover {
           background: ${borderColor} !important;
         }

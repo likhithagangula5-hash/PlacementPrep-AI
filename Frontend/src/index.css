@@ -172,3 +172,46 @@ pre {
     display: none !important;
   }
 }
+
+/* ─── Extra mobile fixes ─── */
+@media (max-width: 768px) {
+  #center {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  #next-steps {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #next-steps > div {
+    padding: 16px;
+  }
+
+  .counter {
+    font-size: 14px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  #center {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  #next-steps ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #next-steps ul li {
+    flex: 1 1 100%;
+  }
+
+  #next-steps ul a {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
