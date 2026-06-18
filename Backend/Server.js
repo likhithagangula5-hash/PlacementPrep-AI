@@ -93,11 +93,8 @@ app.post("/chat", async (req, res) => {
 });
 
 // HEALTH CHECK
-app.get("/health", (req, res) => {
-  res.json({
-    status: "ok",
-    model: "llama-3.3-70b-versatile",
-  });
+app.get("/", (req, res) => {
+  res.json({ message: "PlacPrep-AI Backend is live!", status: "ok" });
 });
 
 // START SERVER
