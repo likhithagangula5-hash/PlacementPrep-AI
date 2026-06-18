@@ -67,7 +67,7 @@ export default function App() {
           display: "flex",
         }}
       >
-        <Sidebar darkMode={darkMode} toggleTheme={toggleTheme} theme={theme} />
+        <SideBar darkMode={darkMode} toggleTheme={toggleTheme} theme={theme} />
 
         {/* Overlay for mobile when sidebar is open */}
         <div

@@ -81,7 +81,7 @@ export default function Sidebar({ darkMode, toggleTheme, theme = {} }) {
             background: "rgba(0,0,0,0.5)",
             zIndex: 999,
           }}
-          id="sidebar-backdrop"
+          id="SideBar-backdrop"
         />
       )}
 
