@@ -102,7 +102,7 @@ Open `http://localhost:5173` in your browser.
 
 ## Live Demo
 
-[PlacPrep-AI Live](https://likhithagangula5-hash.github.io/PlacementPrep-AI)
+[PlacPrep-AI Live](https://placement-prep-ai-alpha.vercel.app/)
 
 ---
 
